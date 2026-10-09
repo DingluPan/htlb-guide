@@ -90,6 +90,20 @@ a { color: #2c5f8a; }
 
 .legend .badge { margin-right: 2px; }
 </style>
+<script>
+// 微信内置浏览器缓存破坏：检测版本，若非最新则强制刷新一次
+(function(){
+  var V = '20260917b';
+  try {
+    var seen = localStorage.getItem('htlb_v');
+    if (seen !== V) {
+      localStorage.setItem('htlb_v', V);
+      var url = location.href.split('#')[0].split('?')[0] + '?v=' + V + (location.hash || '');
+      location.replace(url);
+    }
+  } catch(e) {}
+})();
+</script>
 </head>
 <body id="top">
 <div class="toc-sticky" id="tocSticky"><div class="toc-head"><span class="t">📖 目录 · 34 章 676 条</span><span class="btns"><button onclick="toggleCollapse()" id="btnCollapse">收起 ▲</button><button onclick="expandToc()">展开 ⤢</button></span></div>
